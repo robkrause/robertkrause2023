@@ -1,0 +1,26 @@
+---
+const { post } = Astro.props
+---
+
+<div class="group relative cursor-pointer">
+	<figure
+		class="scale-[0.95] transform-gpu transition-all duration-300 hover:scale-100 hover:drop-shadow-[0_25px_25px_rgba(4,120,87,0.15)]"
+	>
+		<a href={post.uri} aria-label={post.title} class="flex w-full flex-col">
+			<img
+				class="rounded-2xl"
+				src={post?.blog.previewImage?.node?.mediaItemUrl}
+				alt={post?.blog.previewImage?.node?.altText}
+				srcset={post?.blog.previewImage?.node?.srcSet}
+				loading="lazy"
+			/>
+		</a>
+		<figcaption
+			class="absolute bottom-0 w-full transform-gpu rounded-2xl bg-gradient-to-t from-emerald-700 to-transparent px-6 tracking-wider text-white opacity-0 duration-500 group-hover:text-white group-hover:opacity-100"
+		>
+			<h4 class="mb-3 mt-8 text-6xl">{post.title}</h4>
+			<p class="mb-6 text-lg">{post?.blog.previewText}</p>
+			<!-- <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time> -->
+		</figcaption>
+	</figure>
+</div>
